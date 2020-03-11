@@ -1,9 +1,5 @@
-import socket
-# import urllib.request
 import fritzconnection as fc
-import sys
 import ncupdate
-import json
 
 
 # install fritzbox
