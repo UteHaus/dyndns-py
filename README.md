@@ -6,11 +6,12 @@ Use the following API [nc_dnsapi](https://github.com/nbuchwitz/nc_dnsapi) to upd
 ### Installa Dependencies:
 
 ```sh
-    pip install fritzconnection
+    pip3 install fritzconnection
+    pip3 install fritzcollectd
 ```
 
-and fritzconnection requires the python modules `lxml` and `requests`:
+## Start
 
-```sh
-    pip install lxml requests
-```
+1. In the folder run `git clone https://github.com/nbuchwitz/nc_dnsapi`
+1. `mv nc_dnsapi api`
+1. `python3 . `
