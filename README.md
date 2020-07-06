@@ -18,6 +18,11 @@ or for specific python version:
     pip3 install fritzconnection
 ```
 
+### Troubleshooting
+
+**python**
+- `ModuleNotFoundError: No module named 'fritzconnection'` reintall `fritzconnection`
+
 ## Start
 
 1. install python3 `sudo apt install python3`
