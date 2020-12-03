@@ -1,4 +1,4 @@
-# dyndns-py
+# dyndns-py for netcup
 
 ## API
 
