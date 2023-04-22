@@ -1,6 +1,7 @@
 import json
 from api.nc_dnsapi import DNSRecord, Client
 import socket
+from ipaddress import ip_interface, IPv4Address
 
 
 def updateDomaine(currentIp: str):
@@ -20,14 +21,18 @@ def updateDomaine(currentIp: str):
 
 def checkDnsRecord(client: Client, domain: str, dnsRecord: DNSRecord, settingDnsRecord: DNSRecord, currentIp: str):
     if (dnsRecord):
-        if (dnsRecord.destination != currentIp):
+        destination_Ip = ip_interface(dnsRecord.destination)
+        current_Ip = ip_interface(currentIp)
+
+        if (destination_Ip != current_Ip):
             print("Update settings of " + dnsRecord.hostname + ".")
+            printIp(dnsRecord.destination, currentIp)
             setIp(dnsRecord, currentIp)
             client.update_dns_record(domain, dnsRecord)
         else:
             print("Settings of " + dnsRecord.hostname + " are up to date.")
+            print("current ip: " + dnsRecord.hostname)
 
-        printIp(dnsRecord.destination, currentIp)
     else:
         print('For the subdomain ' + settingDnsRecord.hostname +
               ' find any dns record, create a new.')
