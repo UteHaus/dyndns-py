@@ -1,6 +1,8 @@
-#import ncupdate
+import ncupdate
 import requests
 import miniupnpc
+import argparse
+
 
 def my_public_ip():
     u = miniupnpc.UPnP()
@@ -11,12 +13,19 @@ def my_public_ip():
 
 
 def main():
-    print("Dyndns from local.")
-    public_ip=my_public_ip()
+    parser = argparse.ArgumentParser(description='Optional app description')
+    parser.add_argument('opt_pos_arg', type=str, nargs='?',
+                        help='A optional  extern ip.')
+
+    args = parser.parse_args()
+    public_ip = args.opt_pos_arg
+
+    if public_ip is None:
+        public_ip = my_public_ip()
+
+    print("Dyndns from local extern ip: " + public_ip)
     ncupdate.updateDomaine(public_ip)
 
 
 if __name__ == "__main__":
     main()
-
-
